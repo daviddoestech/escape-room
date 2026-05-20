@@ -1,0 +1,95 @@
+body{
+    margin:0;
+    overflow:hidden;
+    font-family:Arial;
+    background:#0d0d0d;
+}
+
+/* ROOM */
+#room{
+    width:100vw;
+    height:100vh;
+    position:relative;
+    background:linear-gradient(#2a2a2a,#111);
+}
+
+/* PLAYER */
+#player{
+    width:35px;
+    height:35px;
+    background:lime;
+    position:absolute;
+    left:100px;
+    top:400px;
+}
+
+/* OBJECTS */
+.obj{
+    position:absolute;
+    background:#333;
+    border:2px solid white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-size:14px;
+}
+
+#desk{width:120px;height:80px;left:200px;top:420px;}
+#note{width:80px;height:60px;left:230px;top:380px;background:#555;}
+#tv{width:120px;height:80px;left:450px;top:300px;}
+#lamp{width:60px;height:120px;left:450px;top:420px;background:orange;}
+#safe{width:100px;height:100px;left:750px;top:400px;}
+#pc{width:120px;height:80px;left:950px;top:350px;}
+#door{width:140px;height:220px;left:1200px;top:350px;background:brown;}
+
+/* UI */
+#ui{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    background:rgba(0,0,0,0.85);
+    padding:12px;
+}
+
+#text{
+    color:yellow;
+    font-size:18px;
+    min-height:25px;
+}
+
+input,button{
+    padding:8px;
+    font-size:16px;
+    margin-top:5px;
+}
+
+/* WIN SCREEN */
+#win{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:black;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    color:lime;
+    font-size:40px;
+}
+
+/* CONFETTI */
+.p{
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:lime;
+    animation:fall 2s linear forwards;
+}
+
+@keyframes fall{
+    from{transform:translateY(-50px);}
+    to{transform:translateY(800px);opacity:0;}
+}
