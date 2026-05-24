@@ -1,37 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Escape Room</title>
-
-<link rel="stylesheet" href="style.css">
+    <title>Escape Room</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
+  <!--дивз за собата-->
 <div id="room">
 
-<div id="player"></div>
+    <div id="player"></div>
 
-<div class="obj" id="desk">Desk</div>
-<div class="obj" id="note">Note</div>
-<div class="obj" id="tv">TV</div>
-<div class="obj" id="lamp">Lamp</div>
-<div class="obj" id="safe">Safe</div>
-<div class="obj" id="pc">PC</div>
-<div class="obj" id="door">DOOR</div>
+    <div id="desk" class="obj">Биро</div>
+    <div id="note" class="obj">Белешка</div>
+    <div id="tv" class="obj">ТВ</div>
+    <div id="lamp" class="obj">Ламба</div>
+    <div id="safe" class="obj">Сеф</div>
+    <div id="pc" class="obj">Компјутер</div>
+    <div id="door" class="obj">Врата</div>
 
 </div>
-
+<!--див за UI на инструкциите за контроли
 <div id="ui">
-<div id="text">Move: WASD / E to interact</div>
-<div id="controls"></div>
+    <div id="text">Движење: WASD / E за користење</div>
+    <div id="controls"></div>
 </div>
-
+<!--див за победа-->
 <div id="win">
-🎉 YOU ESCAPED!
-<div style="font-size:18px;margin-top:10px;color:white;">
-System shutdown complete
-</div>
+    🎉 УСПЕА ДА ИЗБЕГАШ!
 </div>
 
 <script src="script.js"></script>
