@@ -1,183 +1,129 @@
-let x = 100;
-let y = 400;
+var x = 100;
+var y = 400;
 
-let current = "";
+var player = document.getElementById("player");
+var text = document.getElementById("text");
+var controls = document.getElementById("controls");
+var win = document.getElementById("win");
 
-/* codes */
-let safeCode = "123";
-let doorCode = "1234";
+var safeCode = "123";
+var doorCode = "1234";
 
-/* player */
-let player = document.getElementById("player");
-let text = document.getElementById("text");
-let controls = document.getElementById("controls");
-let win = document.getElementById("win");
+var current = "";
 
-/* move */
-document.addEventListener("keydown", function(event){
+/* движење */
+document.addEventListener("keydown", function(e){
 
-    if(event.key == "w"){
-        y = y - 10;
-    }
-
-    if(event.key == "s"){
-        y = y + 10;
-    }
-
-    if(event.key == "a"){
-        x = x - 10;
-    }
-
-    if(event.key == "d"){
-        x = x + 10;
-    }
+    if(e.key == "w") y = y - 10;
+    if(e.key == "s") y = y + 10;
+    if(e.key == "a") x = x - 10;
+    if(e.key == "d") x = x + 10;
 
     player.style.left = x + "px";
     player.style.top = y + "px";
 
     check();
 
-    if(event.key == "e"){
-        interact();
+    if(e.key == "e"){
+        use();
     }
-
 });
 
-/* check distance */
-function near(id){
+/* дали си блиску */
+function near(objId){
 
-    let obj = document.getElementById(id);
+    var obj = document.getElementById(objId);
 
-    let ox = obj.offsetLeft;
-    let oy = obj.offsetTop;
-
-    if(Math.abs(x - ox) < 90 && Math.abs(y - oy) < 90){
+    if(Math.abs(x - obj.offsetLeft) < 80 &&
+       Math.abs(y - obj.offsetTop) < 80){
         return true;
     }
 
     return false;
 }
 
-/* detect object */
+/* проверка што гледаш */
 function check(){
 
     current = "";
 
-    if(near("note")){
-        current = "note";
-    }
-    else if(near("desk")){
-        current = "desk";
-    }
-    else if(near("tv")){
-        current = "tv";
-    }
-    else if(near("lamp")){
-        current = "lamp";
-    }
-    else if(near("safe")){
-        current = "safe";
-    }
-    else if(near("pc")){
-        current = "pc";
-    }
-    else if(near("door")){
-        current = "door";
-    }
+    if(near("note")) current = "note";
+    else if(near("desk")) current = "desk"; /* маса */
+    else if(near("tv")) current = "tv"; /* телевизор */
+    else if(near("lamp")) current = "lamp"; /* ламба */
+    else if(near("safe")) current = "safe"; /* сеф */
+    else if(near("pc")) current = "pc"; /* компјутер */
+    else if(near("door")) current = "door"; /* врата */
 
     if(current != ""){
-        text.innerHTML = "Press E to use: " + current;
+        text.innerHTML = "Притисни E за: " + current;
+    } else {
+        text.innerHTML = "Истражувај ја собата";
     }
-    else{
-        text.innerHTML = "Explore the room";
-    }
-
 }
 
-/* interact */
-function interact(){
+/* користење предмет */
+function use(){
 
     controls.innerHTML = "";
 
     if(current == "note"){
-        text.innerHTML = "Note says: Safe code is 123";
+        text.innerHTML = "Белешка: кодот за сеф е 123";
     }
 
     if(current == "desk"){
-        text.innerHTML = "Desk: number 1";
+        text.innerHTML = "Биро: ништо интересно";
     }
 
     if(current == "tv"){
-        text.innerHTML = "TV: number 2";
+        text.innerHTML = "ТВ: број 2";
     }
 
     if(current == "lamp"){
-        text.innerHTML = "Lamp: number 3";
+        text.innerHTML = "Ламба: број 3";
+    }
+
+    if(current == "pc"){
+        text.innerHTML = "PC: код за врата е 1234";
     }
 
     if(current == "safe"){
 
-        text.innerHTML = "Enter safe code";
+        text.innerHTML = "Внеси код за сеф";
 
         controls.innerHTML =
-        "<input id='safeInput'><button onclick='checkSafe()'>open</button>";
-
-    }
-
-    if(current == "pc"){
-        text.innerHTML = "PC hint: door code is 1234";
+        "<input id='input1'><button onclick='safeCheck()'>отвори</button>";
     }
 
     if(current == "door"){
 
-        text.innerHTML = "Enter door code";
+        text.innerHTML = "Внеси код за врата";
 
         controls.innerHTML =
-        "<input id='doorInput'><button onclick='checkDoor()'>open</button>";
-
+        "<input id='input2'><button onclick='doorCheck()'>отвори</button>";
     }
-
 }
 
-/* SAFE */
-function checkSafe(){
+/* сеф */
+function safeCheck(){
 
-    let value = document.getElementById("safeInput").value;
+    var v = document.getElementById("input1").value;
 
-    if(value == safeCode){
-        text.innerHTML = "Safe opened!";
+    if(v == safeCode){
+        text.innerHTML = "СЕФ ОТВОРЕН!";
+    } else {
+        text.innerHTML = "Погрешен код";
     }
-    else{
-        text.innerHTML = "Wrong code";
-    }
-
 }
 
-/* DOOR WIN */
-function checkDoor(){
+/* врата */
+function doorCheck(){
 
-    let value = document.getElementById("doorInput").value;
+    var v = document.getElementById("input2").value;
 
-    if(value == doorCode){
-
+    if(v == doorCode){
         win.style.display = "flex";
-
-        for(let i = 0; i < 30; i++){
-
-            let p = document.createElement("div");
-            p.className = "p";
-            p.style.left = Math.random() * window.innerWidth + "px";
-            document.body.appendChild(p);
-
-            setTimeout(function(){
-                p.remove();
-            }, 2000);
-
-        }
-
+    } else {
+        text.innerHTML = "Погрешен код";
     }
-    else{
-        text.innerHTML = "Wrong code";
-    }
-
 }
