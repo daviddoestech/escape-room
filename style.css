@@ -2,94 +2,62 @@ body{
     margin:0;
     overflow:hidden;
     font-family:Arial;
-    background:#0d0d0d;
+    background:#111;
 }
 
-/* ROOM */
+/* соба */
 #room{
     width:100vw;
     height:100vh;
     position:relative;
-    background:linear-gradient(#2a2a2a,#111);
+    background:gray;
 }
-
-/* PLAYER */
+/* играч */
 #player{
-    width:35px;
-    height:35px;
+    width:30px;
+    height:30px;
     background:lime;
     position:absolute;
     left:100px;
     top:400px;
 }
 
-/* OBJECTS */
 .obj{
     position:absolute;
     background:#333;
-    border:2px solid white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
     color:white;
-    font-size:14px;
+    padding:10px;
+    border:1px solid white;
 }
 
-#desk{width:120px;height:80px;left:200px;top:420px;}
-#note{width:80px;height:60px;left:230px;top:380px;background:#555;}
-#tv{width:120px;height:80px;left:450px;top:300px;}
-#lamp{width:60px;height:120px;left:450px;top:420px;background:orange;}
-#safe{width:100px;height:100px;left:750px;top:400px;}
-#pc{width:120px;height:80px;left:950px;top:350px;}
-#door{width:140px;height:220px;left:1200px;top:350px;background:brown;}
+#desk{left:200px;top:400px;} /* масата */
+#note{left:230px;top:350px;} /* белешка */
+#tv{left:450px;top:300px;} /* телевизор */
+#lamp{left:450px;top:450px;} /* ламба */
+#safe{left:700px;top:400px;} /* сеф */
+#pc{left:900px;top:350px;} /* компјутер */
+#door{left:1100px;top:350px;background:brown;} /* врата */
 
-/* UI */
+/* ui */
 #ui{
     position:fixed;
     bottom:0;
     width:100%;
-    background:rgba(0,0,0,0.85);
-    padding:12px;
-}
-
-#text{
+    background:black;
     color:yellow;
-    font-size:18px;
-    min-height:25px;
+    padding:10px;
 }
-
-input,button{
-    padding:8px;
-    font-size:16px;
-    margin-top:5px;
-}
-
-/* WIN SCREEN */
+/* победа */
 #win{
+    display:none;
     position:fixed;
     top:0;
     left:0;
     width:100%;
     height:100%;
     background:black;
-    display:none;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
     color:lime;
     font-size:40px;
-}
-
-/* CONFETTI */
-.p{
-    position:absolute;
-    width:6px;
-    height:6px;
-    background:lime;
-    animation:fall 2s linear forwards;
-}
-
-@keyframes fall{
-    from{transform:translateY(-50px);}
-    to{transform:translateY(800px);opacity:0;}
+    justify-content:center;
+    align-items:center;
 }
